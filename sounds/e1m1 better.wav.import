@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/e1m1 better.wav-c8e247405a9adb51c2f3bbe50e0579cc.sample"
+
+[deps]
+
+source_file="res://sounds/e1m1 better.wav"
+dest_files=[ "res://.import/e1m1 better.wav-c8e247405a9adb51c2f3bbe50e0579cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

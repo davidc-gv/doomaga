@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Doomguy/Doomguy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MainScenes/background.jpg" type="Texture" id=2]
+[ext_resource path="res://BottomBar/StatusBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainScenes/Gameplay.gd" type="Script" id=4]
+[ext_resource path="res://Deathscreen/deathScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/e1m1 better.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/deathsound.wav" type="AudioStream" id=7]
+[ext_resource path="res://sounds/hurtsound.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/enemydie.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/healthPickupSound.wav" type="AudioStream" id=10]
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 529.644, 80.1927 )
+scale = Vector2( 1.24385, 1.13961 )
+texture = ExtResource( 2 )
+
+[node name="StatusBar" parent="." instance=ExtResource( 3 )]
+position = Vector2( 510.001, 548.001 )
+
+[node name="Doomguy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 516, 460 )
+
+[node name="GameOver" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 513, 300 )
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="getsHurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="getsDeadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="healthPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="impDeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -13.26
+
+[node name="restartTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+[connection signal="finished" from="backgroundMusic" to="." method="_on_backgroundMusic_finished"]
+[connection signal="finished" from="getsDeadSound" to="." method="_on_getsDeadSound_finished"]
